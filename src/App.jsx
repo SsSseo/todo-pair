@@ -1,32 +1,29 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addPlan } from './redux/moduls/Plans';
+import React from 'react'
+import styled from "styled-components";
 import InputText from './components/InputText';
 import List from './components/List';
 
 function App() {
 
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
-
-  //제목 저장
-  const titleChangeHandler = (event) => {
-    setTitle(event.target.value)
-  }
-
-  //내용 저장
-  const bodyChangeHandler = (event) => {
-    setBody(event.target.value)
-  }
-
-  const dispatch = useDispatch()
 
   return (
-    <div>
-        <InputText />
-        <List />
-    </div>
+    <StWrap>
+      <InputText />
+      <List />
+    </StWrap>
   )
 }
+
+const StWrap = styled.div`
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  margin: 0;
+  padding: 0;
+
+`
 
 export default App

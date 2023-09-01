@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addPlan } from '../redux/moduls/Plans';
+import styled from "styled-components";
 
 function InputText() {
 
@@ -25,7 +26,7 @@ function InputText() {
   const addButtonHandler = (event) => {
     event.preventDefault();
 
-    dispatch(addPlan( title, body, nextId ));
+    dispatch(addPlan(title, body, nextId));
     setTitle('')
     setBody('')
     setNextId(nextId + 1)
@@ -34,24 +35,78 @@ function InputText() {
 
 
   return (
-    <div>
-      <input
-        value={title}
-        onChange={titleChangeHandler}
-        type="text"
-        placeholder="제목을 입력하세요" />
-      <input
-        value={body}
-        onChange={bodyChangeHandler}
-        type="text"
-        placeholder="내용을 입력하세요" />
-      <button
+    <StInputBox>
+      <StInputGroup>
+        <StInput
+          value={title}
+          onChange={titleChangeHandler}
+          type="text"
+          placeholder="제목을 입력하세요" />
+        <StInput
+          value={body}
+          onChange={bodyChangeHandler}
+          type="text"
+          placeholder="내용을 입력하세요" />
+      </StInputGroup>
+      <StAddButton
         onClick={addButtonHandler}
         className="write-button">
-        추가
-      </button>
-    </div>
+        +
+      </StAddButton>
+    </StInputBox>
   )
 }
 
+const StInputBox = styled.div`
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  margin: 50px 0 30px 0;
+  padding: 30px 100px;
+  box-shadow: 0 4px 5px -4px rgb(219, 219, 219);
+
+  margin-bottom: 30px;
+`
+const StInputGroup = styled.div`
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const StInput = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  resize: none;
+  overflow: hidden;
+  background-color: rgb(226, 226, 226);
+  margin-bottom:10px;
+
+  &:focus {
+    outline: none;
+  }
+`
+
+const StAddButton = styled.button`
+  margin-left: auto;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 7px;
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  margin-bottom:10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
 export default InputText

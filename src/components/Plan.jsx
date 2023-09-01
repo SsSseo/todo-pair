@@ -10,16 +10,15 @@ function Plan({ plan }) {
   return (
     <div>
       <StBox key={plan.id} className="list-container">
-        <div>{plan.isDone ? "💙" : "🧡"}</div>
-        <div>
-          <div>{plan.title}</div>
-          <div>{plan.body}</div>
-        </div>
+        <StStateIcon>{plan.isDone ? "💙" : "🧡"}</StStateIcon>
+        <StStateList>
+          <StPlanTitle>{plan.title}</StPlanTitle>
+          <StPlanBody>{plan.body}</StPlanBody>
+        </StStateList>
 
-        <div>
-          {/* isDone의 상태에 따라 버튼 다르게 나오기 */}
+        <StButtonGroup>
           <button onClick={() => { dispatch(updatePlan(plan.id)) }}>
-            {plan.isDone ? 'Working' : 'Done'}
+            {plan.isDone ? '취소' : '완료'}
           </button>
 
           <button
@@ -27,17 +26,63 @@ function Plan({ plan }) {
             className="list-button list-delete-button">
             ✖
           </button>
-        </div>
+        </StButtonGroup>
       </StBox>
     </div>
   )
 }
 
 const StBox = styled.div`
-  width: 180px;
-  height: 180px;  
-  border: 1px solid green;
-  padding: 2px;
+  width: 90%;
+  height: 80px;  
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `
+
+const StStateIcon = styled.div`
+  width : 20px;
+  font-size: 15px;
+  margin-bottom: 22px;
+`
+
+const StStateList = styled.div`
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+`
+const StPlanTitle = styled.div`
+  font-size: 17px;
+  font-weight: bold;
+`
+
+const StPlanBody= styled.div`
+  font-size: 14px;
+`
+
+const StButtonGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  & button {
+    border: none;
+    background-color: white;
+    margin-left: 5px;
+
+    &:hover {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+`
+
+
 
 export default Plan
