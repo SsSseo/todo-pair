@@ -6,11 +6,12 @@ const ADD_PLAN = "ADD_PLAN"
 
 
 // 매개변수의 payload는 App컴포넌트에서 받아온다
-export const addPlan = (title, body) => {
+export const addPlan = (title, body, nextId) => {
+  console.log(title, body, nextId)
   return {
     type: ADD_PLAN,
     payload: {
-      id: 0,
+      id: nextId,
       title,
       body,
       isDone: false
@@ -41,22 +42,15 @@ const initialState = {
 const todoList = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PLAN:
-      console.log(state)
+      console.log(action)
       return {
         ...state,
-        plans: state.plans.concat({
-          id: action.payload.id,
-          title: action.payload.title,
-          body: action.payload.body,
-          isDone: false
-        }),
+        plans: [...state.plans, action.payload],
       }
     default:
       return state
   }
 }
 
-// action 객체라는 것은 action payload 만큼 처리하는 것이다
-// 예) payload가 3이다. 3만큼 plus
 
 export default todoList
