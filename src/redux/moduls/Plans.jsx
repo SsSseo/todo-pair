@@ -1,11 +1,14 @@
 // action value
 const ADD_PLAN = "ADD_PLAN"
+const DELETE_PLAN = "DELETE_PLAN"
+const UPDATE_PLAN = "UPDATE_PLAN"
 
 // action creator : action value를 return 하는 함수
-// 컴포넌트에서 사용하기 위해 export
-
-
 // 매개변수의 payload는 App컴포넌트에서 받아온다
+
+
+
+
 export const addPlan = (title, body, nextId) => {
   console.log(title, body, nextId)
   return {
@@ -16,6 +19,20 @@ export const addPlan = (title, body, nextId) => {
       body,
       isDone: false
     },
+  }
+}
+
+export const deletePlan = (id) => {
+  return {
+    type: DELETE_PLAN,
+    payload: id,
+  }
+}
+
+export const updatePlan = (id) => {
+  return {
+    type: UPDATE_PLAN,
+    payload: id,
   }
 }
 
@@ -42,10 +59,28 @@ const initialState = {
 const todoList = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PLAN:
-      console.log(action)
       return {
         ...state,
         plans: [...state.plans, action.payload],
+      }
+    case DELETE_PLAN:
+      return {
+        ...state,
+        plans: state.plans.filter(plan => plan.id !== action.payload)
+      }
+    case UPDATE_PLAN:
+      return {
+        ...state,
+        plans: state.plans.map(plan => {
+          if(plan.id === action.payload) {
+            return {
+              ...plan,
+              isDone: !plan.isDone
+            }
+          } else {
+            return plan
+          }
+        })
       }
     default:
       return state

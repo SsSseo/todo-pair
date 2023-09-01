@@ -1,47 +1,72 @@
 import React from 'react'
 import styled from "styled-components";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { deletePlan, updatePlan } from '../redux/moduls/Plans';
+
 
 function List() {
-
+  const dispatch = useDispatch();
   const plans = useSelector(state => state.plans.plans)
+
 
   return (
     <StListContainer>
+      <span>Working</span>
       {
         plans.map((plan) => {
-          return (
-            <StBox key={plan.id} className="list-container">
-              <div className="check-icon">{plan.isDone ? "💙" : "🧡"}</div>
-              <div className="list-plan">
-                <div className="list-title">{plan.title}</div>
-                <div className="list-content">{plan.body}</div>
-              </div>
-              <div>
+          if (!plan.isDone) {
+            return (
+              <StBox key={plan.id} className="list-container">
+                <div>{plan.isDone ? "💙" : "🧡"}</div>
+                <div>
+                  <div>{plan.title}</div>
+                  <div>{plan.body}</div>
+                </div>
 
-                {/* isDone의 상태에 따라 버튼 다르게 나오기 */}
-                {plan.isDone
-                  ? <button
-                    onClick={''}
-                    className="list-button list-working-button"
-                    data-tooltip="🧡">
-                    취소
+                <div>
+                  {/* isDone의 상태에 따라 버튼 다르게 나오기 */}
+                  <button onClick={() => { dispatch(updatePlan(plan.id)) }}>
+                    {plan.isDone ? 'Working' : 'Done'}
                   </button>
-                  : <button
-                    onClick={''}
-                    className="list-button list-done-button"
-                    data-tooltip="💙">
-                    완료
-                  </button>}
 
-                <button
-                  onClick={''}
-                  className="list-button list-delete-button">
-                  ✖
-                </button>
-              </div>
-            </StBox>
-          )
+                  <button
+                    onClick={() => dispatch(deletePlan(plan.id))}
+                    className="list-button list-delete-button">
+                    ✖
+                  </button>
+                </div>
+              </StBox>
+            )
+          }
+        })
+      }
+      <span>Done</span>
+      {
+        plans.map((plan) => {
+          if (plan.isDone) {
+            return (
+              <StBox key={plan.id} className="list-container">
+                <div>{plan.isDone ? "💙" : "🧡"}</div>
+                <div>
+                  <div>{plan.title}</div>
+                  <div>{plan.body}</div>
+                </div>
+
+                <div>
+                  {/* isDone의 상태에 따라 버튼 다르게 나오기 */}
+                  <button onClick={() => { dispatch(updatePlan(plan.id)) }}>
+                    {plan.isDone ? 'Working' : 'Done'}
+                  </button>
+
+                  <button
+                    onClick={() => dispatch(deletePlan(plan.id))}
+                    className="list-button list-delete-button">
+                    ✖
+                  </button>
+                </div>
+              </StBox>
+            )
+          }
         })
       }
 
@@ -63,4 +88,5 @@ const StBox = styled.div`
   border: 1px solid green;
   padding: 2px;
 `
+
 export default List
