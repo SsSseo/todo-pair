@@ -4,12 +4,12 @@
     - 제목 : title <br />
     - 내용 : body <br />
   📄Plan.jsx <br />
-    - 리스트 하나의 컴포넌트
+    - 리스트 하나의 컴포넌트 <br />
   📄List.jsx <br />
-    - plan 컴포넌트를 map으로 가져온다
+    - plan 컴포넌트를 map으로 가져온다 <br />
     - plan의 isDone 상황에 따라 working/done의 구현 <br />
-      - isDone : false -> Working
-      - isDone : true -> Done
+      - isDone : false -> Working <br />
+      - isDone : true -> Done <br />
 <br />
 📁pages
   📄Detail.jsx <br />
