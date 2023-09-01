@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from "styled-components";
-import { useDispatch, useSelector } from 'react-redux'
-import { deletePlan, updatePlan } from '../redux/moduls/Plans';
+import { useSelector } from 'react-redux'
+import Plan from './Plan';
 
 
 function List() {
-  const dispatch = useDispatch();
+
   const plans = useSelector(state => state.plans.plans)
 
 
@@ -16,26 +16,9 @@ function List() {
         plans.map((plan) => {
           if (!plan.isDone) {
             return (
-              <StBox key={plan.id} className="list-container">
-                <div>{plan.isDone ? "💙" : "🧡"}</div>
-                <div>
-                  <div>{plan.title}</div>
-                  <div>{plan.body}</div>
-                </div>
-
-                <div>
-                  {/* isDone의 상태에 따라 버튼 다르게 나오기 */}
-                  <button onClick={() => { dispatch(updatePlan(plan.id)) }}>
-                    {plan.isDone ? 'Working' : 'Done'}
-                  </button>
-
-                  <button
-                    onClick={() => dispatch(deletePlan(plan.id))}
-                    className="list-button list-delete-button">
-                    ✖
-                  </button>
-                </div>
-              </StBox>
+              <Plan
+                key={plan.id}
+                plan={plan} />
             )
           }
         })
@@ -45,26 +28,9 @@ function List() {
         plans.map((plan) => {
           if (plan.isDone) {
             return (
-              <StBox key={plan.id} className="list-container">
-                <div>{plan.isDone ? "💙" : "🧡"}</div>
-                <div>
-                  <div>{plan.title}</div>
-                  <div>{plan.body}</div>
-                </div>
-
-                <div>
-                  {/* isDone의 상태에 따라 버튼 다르게 나오기 */}
-                  <button onClick={() => { dispatch(updatePlan(plan.id)) }}>
-                    {plan.isDone ? 'Working' : 'Done'}
-                  </button>
-
-                  <button
-                    onClick={() => dispatch(deletePlan(plan.id))}
-                    className="list-button list-delete-button">
-                    ✖
-                  </button>
-                </div>
-              </StBox>
+              <Plan
+                key={plan.id}
+                plan={plan} />
             )
           }
         })
@@ -81,12 +47,5 @@ const StListContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-const StBox = styled.div`
-  width: 180px;
-  height: 180px;  
-  border: 1px solid green;
-  padding: 2px;
-`
 
 export default List
