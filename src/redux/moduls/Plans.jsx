@@ -6,11 +6,7 @@ const UPDATE_PLAN = "UPDATE_PLAN"
 // action creator : action value를 return 하는 함수
 // 매개변수의 payload는 App컴포넌트에서 받아온다
 
-
-
-
 export const addPlan = (title, body, nextId) => {
-  console.log(title, body, nextId)
   return {
     type: ADD_PLAN,
     payload: {

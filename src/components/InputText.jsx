@@ -26,6 +26,10 @@ function InputText() {
   const addButtonHandler = (event) => {
     event.preventDefault();
 
+    if (!title.length || !body.length) {
+      return alert('제목 또는 내용을 입력 해 주세요')
+    };
+
     dispatch(addPlan(title, body, nextId));
     setTitle('')
     setBody('')

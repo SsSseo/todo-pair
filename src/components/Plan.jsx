@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { Link } from "react-router-dom";
 import { deletePlan, updatePlan } from '../redux/moduls/Plans';
 
 function Plan({ plan }) {
@@ -17,6 +18,9 @@ function Plan({ plan }) {
         </StStateList>
 
         <StButtonGroup>
+          <StLink  to={`/${plan.id}`} key={plan.id} className="no-underline">
+            <div> 상세 페이지 </div>
+          </StLink>
           <button onClick={() => { dispatch(updatePlan(plan.id)) }}>
             {plan.isDone ? '취소' : '완료'}
           </button>
@@ -50,7 +54,7 @@ const StStateIcon = styled.div`
 `
 
 const StStateList = styled.div`
-  width: 330px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +65,7 @@ const StPlanTitle = styled.div`
   font-weight: bold;
 `
 
-const StPlanBody= styled.div`
+const StPlanBody = styled.div`
   font-size: 14px;
 `
 
@@ -83,6 +87,11 @@ const StButtonGroup = styled.div`
   }
 `
 
+const StLink = styled(Link)`
+  text-decoration: none; /* 밑줄 제거 스타일 */
+  color: black;
+  font-size: 14px;
+`;
 
 
 export default Plan
