@@ -19,7 +19,7 @@ function Plan({ plan }) {
 
         <StButtonGroup>
           <StLink  to={`/${plan.id}`} key={plan.id} className="no-underline">
-            <div> 상세 페이지 </div>
+            <div> 상세보기🔻 </div>
           </StLink>
           <button onClick={() => { dispatch(updatePlan(plan.id)) }}>
             {plan.isDone ? '취소' : '완료'}
