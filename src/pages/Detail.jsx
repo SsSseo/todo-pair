@@ -15,14 +15,49 @@ function Detail({}) {
     })
 
     console.log(formData)
-    return (
-    <div>
+     return (
+    <>
+    <StContainer>
+      <StBox>
+      <StFirst>
       <div>ID: {formData.id} </div>
-      <button onClick={() => navigate("/")}>이전으로</button>
-      <div>{formData.title}</div>
-      <div>{formData.body}</div>
-    </div>
+      <StButton onClick={() => navigate("/")}>이전으로</StButton>
+      </StFirst>
+      <h1>{formData.title}</h1>
+      <h3>{formData.body}</h3>
+      </StBox>
+    </StContainer>
+    </>
   )
 }
 
 export default Detail
+
+const StContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  border: 2px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const StBox = styled.div `
+  width: 600px;
+  height: 400px;
+  border: 2px solid #eee;
+  padding: 30px;
+`
+const StFirst = styled.div `
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+
+`
+const StButton = styled.button`
+border: 1px solid ${({ borderColor }) => borderColor};
+height: 40px;
+width: 120px;
+background-color: #fff;
+border-radius: 12px;
+cursor: pointer;
+`;
