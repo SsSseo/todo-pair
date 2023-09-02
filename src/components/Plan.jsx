@@ -18,7 +18,7 @@ function Plan({ plan }) {
         </StStateList>
 
         <StButtonGroup>
-          <StLink  to={`/${plan.id}`} key={plan.id} className="no-underline">
+          <StLink to={`/${plan.id}`} key={plan.id} className="no-underline">
             <div> 상세보기🔻 </div>
           </StLink>
           <button onClick={() => { dispatch(updatePlan(plan.id)) }}>
@@ -37,7 +37,7 @@ function Plan({ plan }) {
 }
 
 const StBox = styled.div`
-  width: 90%;
+  width: 905;
   height: 80px;  
   padding: 10px;
 
@@ -79,18 +79,24 @@ const StButtonGroup = styled.div`
     border: none;
     background-color: white;
     margin-left: 5px;
+    color: #9e9e9e;
 
     &:hover {
-      font-weight: bold;
       cursor: pointer;
+      color: black;
     }
   }
 `
 
 const StLink = styled(Link)`
-  text-decoration: none; /* 밑줄 제거 스타일 */
-  color: black;
+  text-decoration: none;
   font-size: 14px;
+  color: #9e9e9e;
+
+  &:hover {
+    cursor: pointer;
+    color: black;
+  }
 `;
 
 
