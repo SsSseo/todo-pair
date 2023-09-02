@@ -11,6 +11,14 @@
 <br />
 <br />
 
+# 코드컨벤션
+1. 카멜케이스 사용
+2. tab 공백 2개
+3. const 우선 선언
+
+<br />
+<br />
+
 # To Do List
 
 ![](https://velog.velcdn.com/images/p_seo_hn/post/ac1ea824-bb64-4b6a-8c6e-4237d1355894/image.gif)
