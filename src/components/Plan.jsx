@@ -10,7 +10,7 @@ function Plan({ plan }) {
 
   return (
     <div>
-      <StBox key={plan.id} className="list-container">
+      <StBox key={plan.id}>
         <StStateIcon>{plan.isDone ? "💙" : "🧡"}</StStateIcon>
         <StStateList>
           <StPlanTitle>{plan.title}</StPlanTitle>
@@ -26,8 +26,7 @@ function Plan({ plan }) {
           </button>
 
           <button
-            onClick={() => dispatch(deletePlan(plan.id))}
-            className="list-button list-delete-button">
+            onClick={() => dispatch(deletePlan(plan.id))}>
             ✖
           </button>
         </StButtonGroup>
