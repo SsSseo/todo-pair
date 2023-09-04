@@ -55,7 +55,7 @@ const StFirst = styled.div `
 
 `
 const StButton = styled.button`
-border: 1px solid ${({ borderColor }) => borderColor};
+border: 1px solid black;
 height: 40px;
 width: 120px;
 background-color: #fff;
