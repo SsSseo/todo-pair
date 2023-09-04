@@ -56,17 +56,17 @@ const todoList = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PLAN:
       return {
-        ...state,
+        
         plans: [...state.plans, action.payload],
       }
     case DELETE_PLAN:
       return {
-        ...state,
+        
         plans: state.plans.filter(plan => plan.id !== action.payload)
       }
     case UPDATE_PLAN:
       return {
-        ...state,
+        
         plans: state.plans.map(plan => {
           if(plan.id === action.payload) {
             return {

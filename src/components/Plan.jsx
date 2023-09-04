@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
-import { deletePlan, updatePlan } from '../redux/moduls/Plans';
+import { deletePlan, updatePlan } from '../redux/modules/Plans';
 
 function Plan({ plan }) {
 

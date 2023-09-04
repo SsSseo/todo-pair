@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { addPlan } from '../redux/moduls/Plans';
+import { addPlan } from '../redux/modules/Plans';
 import styled from "styled-components";
 
 function InputText() {
